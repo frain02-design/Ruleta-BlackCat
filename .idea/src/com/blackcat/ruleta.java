@@ -57,12 +57,18 @@ public class ruleta {
         }
     }
 
-    // ========== RONDA ==========
     public static void iniciarRonda(Scanner in) {
         System.out.println("\n--- NUEVA RONDA ---");
         char tipo = leerTipoApuesta(in);
         int monto = leerMonto(in);
         System.out.println("Apuesta: " + tipo + " - $" + monto);
+
+        System.out.println("\nGirando la ruleta...");
+        int numero = girarRuleta();
+
+        boolean acierto = evaluarResultado(numero, tipo);
+        mostrarResultado(numero, tipo, monto, acierto);
+
     }
 
     public static int leerMonto(Scanner in) {
@@ -79,9 +85,37 @@ public class ruleta {
         return tipo;
     }
 
-    // ========== FUNCIONES PENDIENTES ==========
-    public static int girarRuleta() { return 0; }
-    public static boolean evaluarResultado(int numero, char tipo) { return false; }
+    public static int girarRuleta() {
+        return rng.nextInt(37); }
+
+    public static boolean esRojo(int n) {
+        for (int rojo : numerosRojos){
+            if (rojo == n){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean evaluarResultado(int numero, char tipo) {
+
+        if(numero == 0){
+        return false;
+        }
+    switch (tipo) {
+        case 'P':
+            return numero % 2 == 0;
+        case 'I':
+            return numero % 2 != 0;
+        case 'R':
+            return esRojo(numero);
+        case 'N':
+            return !esRojo(numero);
+        default:
+            return false;
+
+    }
+
     public static boolean esRojo(int n) { return false; }
     public static void registrarResultado(int numero, int apuesta, boolean acierto) {}
     public static void mostrarResultado(int numero, char tipo, int monto, boolean acierto) {}
