@@ -68,6 +68,7 @@ public class ruleta {
 
         boolean acierto = evaluarResultado(numero, tipo);
         mostrarResultado(numero, tipo, monto, acierto);
+        registrarResultado(numero, monto, acierto);
 
     }
 
@@ -116,9 +117,47 @@ public class ruleta {
 
     }
 
-    public static boolean esRojo(int n) { return false; }
-    public static void registrarResultado(int numero, int apuesta, boolean acierto) {}
-    public static void mostrarResultado(int numero, char tipo, int monto, boolean acierto) {}
+    public static void registrarResultado(int numero, int apuesta, boolean acierto) {
+            if (historialSize < MAX_HISTORIAL){
+                historialNumeros[historialSize] = numero;
+                historialApuestas[historialSize] = apuesta;
+                historialAciertos[historialSize] = acierto;
+                historialSize++;
+                System.out.println("Ronda Registrada en el Historial");
+            }else{
+                System.out.println("Historial lleno. no se puedo registrar esta ronda");
+            }
+
+        }
+
+
+    public static void mostrarResultado(int numero, char tipo, int monto, boolean acierto) {
+            System.out.println("\n=== RESULTADO ===");
+            System.out.println("Número: " + numero);
+
+            if (numero == 0) {
+                System.out.println("Color: Verde (0)");
+            } else if (esRojo(numero)) {
+                System.out.println("Color: Rojo");
+            } else {
+                System.out.println("Color: Negro");
+            }
+
+            String nombreApuesta = "";
+            switch (tipo) {
+                case 'R': nombreApuesta = "Rojo"; break;
+                case 'N': nombreApuesta = "Negro"; break;
+                case 'P': nombreApuesta = "Par"; break;
+                case 'I': nombreApuesta = "Impar"; break;
+            }
+            System.out.println("Apuesta: " + nombreApuesta + " - $" + monto);
+
+            if (acierto) {
+                System.out.println("¡GANASTE! +$" + monto);
+            } else {
+                System.out.println("PERDISTE -$" + monto);
+            }
+    }
 
     public static void mostrarEstadisticas() {
         System.out.println("\nEstadísticas (próximamente)");
