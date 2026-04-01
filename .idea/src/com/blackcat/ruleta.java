@@ -161,6 +161,26 @@ public class ruleta {
     }
 
     public static void mostrarEstadisticas() {
-        System.out.println("\nEstadísticas (próximamente)");
+        if (historialSize==0) {
+            System.out.println("\n no Hay rondas jugadas aun.");
+            return;
+        }
+
+        int totalApostado = 0;
+        int totalAciertos = 0;
+
+        for (int i = 0; i < historialSize; i++) {
+            totalApostado += historialApuestas[i];
+            if(historialAciertos[i]) {
+                totalAciertos++;
+            }
+        }
+        double porcentajeAcierto = (double) totalAciertos / historialSize * 100;
+
+        System.out.println("\n ESTADÍSTICAS ");
+        System.out.println("Rondas jugadas: " + historialSize);
+        System.out.println("Total apostado: $" + totalApostado);
+        System.out.println("Total aciertos: " + totalAciertos);
+        System.out.printf("Porcentaje de acierto: %.2f%%\n", porcentajeAcierto);
     }
 }
