@@ -116,7 +116,7 @@ public class ruleta {
             return false;
 
     }
-
+}
     public static void registrarResultado(int numero, int apuesta, boolean acierto) {
             if (historialSize < MAX_HISTORIAL){
                 historialNumeros[historialSize] = numero;
@@ -158,7 +158,7 @@ public class ruleta {
                 System.out.println("PERDISTE -$" + monto);
             }
         }
-    }
+
 
     public static void mostrarEstadisticas() {
         if (historialSize==0) {
