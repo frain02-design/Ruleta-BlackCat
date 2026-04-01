@@ -157,6 +157,7 @@ public class ruleta {
             } else {
                 System.out.println("PERDISTE -$" + monto);
             }
+        }
     }
 
     public static void mostrarEstadisticas() {
