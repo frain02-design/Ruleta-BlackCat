@@ -85,8 +85,10 @@ public class VentanaLogin {
         }
         return "";
     }
+
     private void abrirRegistro() {
         VentanaRegistro registro = new VentanaRegistro();
         registro.mostrarVentana();
     }
+
 }
