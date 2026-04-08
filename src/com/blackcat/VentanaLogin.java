@@ -50,13 +50,26 @@ public class VentanaLogin {
         String usuario = campoUsuario.getText();
         String clave = new String(campoClave.getPassword());
 
+        System.out.println("Usuario ingresado: " + usuario);
         String nombreUsuario = validarCredenciales(usuario, clave);
 
+        System.out.println("Nombre usuario validado: " + nombreUsuario);
+
         if (!nombreUsuario.isEmpty()) {
+            System.out.println("Login exitoso, abriendo ruleta...");
             JOptionPane.showMessageDialog(ventana,
                     "Bienvenido " + nombreUsuario,
                     "Éxito",
                     JOptionPane.INFORMATION_MESSAGE);
+            ventana.dispose();
+            try {
+                VentanaRuleta ruleta = new VentanaRuleta(nombreUsuario);
+                ruleta.mostrarVentana();
+                System.out.println("Ventana de ruleta debería estar abierta");
+            } catch (Exception e) {
+                System.out.println("ERROR al abrir ruleta: " + e.getMessage());
+                e.printStackTrace();
+            }
         } else {
             JOptionPane.showMessageDialog(ventana,
                     "Usuario o clave incorrectos",
