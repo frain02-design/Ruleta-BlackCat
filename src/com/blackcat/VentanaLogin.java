@@ -7,19 +7,17 @@ import java.util.List;
 
 public class VentanaLogin {
 
-    // Lista de usuarios hardcodeados
     public static final List<Usuario> USUARIOS = new ArrayList<>();
 
-    // Componentes de la ventana
     private final JFrame ventana = new JFrame("Login - Casino Black Cat");
     private final JLabel etiquetaUsuario = new JLabel("Usuario:");
     private final JTextField campoUsuario = new JTextField();
     private final JLabel etiquetaClave = new JLabel("Clave:");
     private final JPasswordField campoClave = new JPasswordField();
     private final JButton botonIngresar = new JButton("Ingresar");
+    private final JButton botonRegistrar = new JButton("Registrar");
 
     public VentanaLogin() {
-        // Agregar usuarios hardcodeados
         USUARIOS.add(new Usuario("admin", "1234", "Administrador"));
         USUARIOS.add(new Usuario("juan", "abc123", "Juan Pérez"));
 
@@ -27,9 +25,9 @@ public class VentanaLogin {
     }
 
     private void configurarVentana() {
-        ventana.setSize(300, 200);
+        ventana.setSize(300, 250);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        ventana.setLayout(new GridLayout(3, 2, 10, 10));
+        ventana.setLayout(new GridLayout(4, 2, 10, 10));
         ventana.setLocationRelativeTo(null);
 
         ventana.add(etiquetaUsuario);
@@ -38,6 +36,7 @@ public class VentanaLogin {
         ventana.add(campoClave);
         ventana.add(new JLabel());
         ventana.add(botonIngresar);
+        ventana.add(botonRegistrar);
 
         botonIngresar.addActionListener(e -> ingresar());
     }
@@ -85,5 +84,9 @@ public class VentanaLogin {
             }
         }
         return "";
+    }
+    private void abrirRegistro() {
+        VentanaRegistro registro = new VentanaRegistro();
+        registro.mostrarVentana();
     }
 }
