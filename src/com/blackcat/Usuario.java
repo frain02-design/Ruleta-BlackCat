@@ -11,11 +11,12 @@ public class Usuario {
         this.contrasena = contrasena;
         this.nombreCompleto = nombreCompleto;
     }
-    return nombreCompleto;
-}
-}
+
     public boolean validarCredenciales(String usuario, String clave) {
         return this.nombreUsuario.equals(usuario) && this.contrasena.equals(clave);
     }
 
     public String getNombreCompleto() {
+        return nombreCompleto;
+    }
+}
