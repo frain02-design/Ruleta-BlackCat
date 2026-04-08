@@ -39,6 +39,7 @@ public class VentanaLogin {
         ventana.add(botonRegistrar);
 
         botonIngresar.addActionListener(e -> ingresar());
+        botonRegistrar.addActionListener(e -> abrirRegistro());
     }
 
     public void mostrarVentana() {
