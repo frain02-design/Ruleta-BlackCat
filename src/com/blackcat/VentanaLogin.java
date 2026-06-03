@@ -18,10 +18,8 @@ public class VentanaLogin {
     private final JButton botonRegistrar = new JButton("Registrar");
 
     public VentanaLogin() {
-        // Usuarios hardcodeados
         USUARIOS.add(new Usuario("admin", "1234", "Administrador"));
         USUARIOS.add(new Usuario("juan", "abc123", "Juan Pérez"));
-
         configurarVentana();
     }
 
@@ -44,11 +42,15 @@ public class VentanaLogin {
         botonRegistrar.addActionListener(e -> abrirRegistro());
     }
 
+    public void mostrarVentana() {
+        ventana.setVisible(true);
+    }
+
     private void ingresar() {
-        String usuario = campoUsuario.getText();
+        String nombreUsuario = campoUsuario.getText();
         String clave = new String(campoClave.getPassword());
 
-        Usuario usuarioActual = validarCredenciales(usuario, clave);
+        Usuario usuarioActual = buscarUsuario(nombreUsuario, clave);
 
         if (usuarioActual != null) {
             JOptionPane.showMessageDialog(ventana,
@@ -56,7 +58,7 @@ public class VentanaLogin {
                     "Éxito",
                     JOptionPane.INFORMATION_MESSAGE);
             ventana.dispose();
-            // ABRE EL MENÚ EN VEZ DE LA RULETA DIRECTA
+            // === CAMBIO IMPORTANTE ===
             VentanaMenu menu = new VentanaMenu(usuarioActual);
             menu.mostrarVentana();
         } else {
@@ -67,9 +69,9 @@ public class VentanaLogin {
         }
     }
 
-    private Usuario validarCredenciales(String usuario, String clave) {
+    private Usuario buscarUsuario(String nombreUsuario, String clave) {
         for (Usuario u : USUARIOS) {
-            if (u.validarCredenciales(usuario, clave)) {
+            if (u.validarCredenciales(nombreUsuario, clave)) {
                 return u;
             }
         }
@@ -80,8 +82,4 @@ public class VentanaLogin {
         VentanaRegistro registro = new VentanaRegistro();
         registro.mostrarVentana();
     }
-
-    public void mostrarVentana() {
-        ventana.setVisible(true);
-    }
-}}
+}
