@@ -41,24 +41,22 @@ public class Ruleta {
         return esRojo(numero) ? "Rojo" : "Negro";
     }
 
-    public boolean evaluarResultado(int numero, TipoApuesta tipoApuesta) {
-        if (numero == 0) return false;
-        switch (tipoApuesta) {
-            case PAR: return numero % 2 == 0;
-            case IMPAR: return numero % 2 != 0;
-            case ROJO: return esRojo(numero);
-            case NEGRO: return !esRojo(numero);
-            default: return false;
-        }
-    }
+    public Resultado jugar(Usuario usuario, ApuestaBase apuesta) {
+        int numero = girarRuleta();
+        String color = obtenerColor(numero);
+        boolean acierto = apuesta.acierta(numero, color);
 
-    public void registrarResultado(int numero, int apuesta, boolean acierto) {
         if (historialSize < MAX_HISTORIAL) {
             historialNumeros[historialSize] = numero;
-            historialApuestas[historialSize] = apuesta;
+            historialApuestas[historialSize] = apuesta.getMonto();
             historialAciertos[historialSize] = acierto;
             historialSize++;
         }
+
+        Resultado resultado = new Resultado(usuario, numero, apuesta, acierto);
+        usuario.agregarResultado(resultado);
+
+        return resultado;
     }
 
     public int getHistorialSize() { return historialSize; }
