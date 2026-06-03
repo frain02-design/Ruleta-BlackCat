@@ -4,15 +4,18 @@ import com.blackcat.modelo.ApuestaBase;
 import com.blackcat.modelo.Resultado;
 import com.blackcat.modelo.Ruleta;
 import com.blackcat.modelo.Usuario;
+import com.blackcat.repositorio.IRepositorioResultados;
 
 public class RuletaController {
 
     private final Ruleta ruleta;
     private final SessionController sessionController;
+    private final IRepositorioResultados repositorio;
 
-    public RuletaController(SessionController sessionController) {
+    public RuletaController(SessionController sessionController, IRepositorioResultados repositorio) {
         this.ruleta = new Ruleta();
         this.sessionController = sessionController;
+        this.repositorio = repositorio;
     }
 
     public Resultado jugar(ApuestaBase apuesta) {
@@ -20,10 +23,16 @@ public class RuletaController {
         if (usuario == null) {
             throw new IllegalStateException("No hay sesión activa");
         }
-        return ruleta.jugar(usuario, apuesta);
+        Resultado resultado = ruleta.jugar(usuario, apuesta);
+        repositorio.guardarResultado(resultado);
+        return resultado;
     }
 
     public Ruleta getRuleta() {
         return ruleta;
+    }
+
+    public IRepositorioResultados getRepositorio() {
+        return repositorio;
     }
 }
