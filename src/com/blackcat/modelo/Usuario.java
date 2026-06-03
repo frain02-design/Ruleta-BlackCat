@@ -37,4 +37,8 @@ public class Usuario {
     public List<Resultado> getHistorial() {
         return Collections.unmodifiableList(historial);
     }
+
+    public void setHistorial(List<Resultado> historial) {
+        this.historial = new ArrayList<>(historial);
+    }
 }
