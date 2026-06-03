@@ -1,8 +1,8 @@
 package com.blackcat.controlador;
 
-import com.blackcat.modelo.Ruleta;
+import com.blackcat.modelo.ApuestaBase;
 import com.blackcat.modelo.Resultado;
-import com.blackcat.modelo.TipoApuesta;
+import com.blackcat.modelo.Ruleta;
 import com.blackcat.modelo.Usuario;
 
 public class RuletaController {
@@ -15,20 +15,12 @@ public class RuletaController {
         this.sessionController = sessionController;
     }
 
-    public Resultado jugar(int monto, TipoApuesta tipoApuesta) {
+    public Resultado jugar(ApuestaBase apuesta) {
         Usuario usuario = sessionController.getUsuarioActual();
         if (usuario == null) {
             throw new IllegalStateException("No hay sesión activa");
         }
-
-        int numero = ruleta.girarRuleta();
-        boolean acierto = ruleta.evaluarResultado(numero, tipoApuesta);
-        ruleta.registrarResultado(numero, monto, acierto);
-
-        Resultado resultado = new Resultado(usuario, numero, tipoApuesta, acierto, monto);
-        usuario.agregarResultado(resultado);
-
-        return resultado;
+        return ruleta.jugar(usuario, apuesta);
     }
 
     public Ruleta getRuleta() {

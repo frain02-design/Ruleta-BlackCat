@@ -48,20 +48,20 @@ public class Estadisticas {
         return rachaMax;
     }
 
-    public TipoApuesta getTipoMasJugado() {
+    public String getTipoMasJugado() {
         if (historial.isEmpty()) {
-            return null;
+            return "N/A";
         }
 
-        Map<TipoApuesta, Integer> conteo = new HashMap<>();
+        Map<String, Integer> conteo = new HashMap<>();
         for (Resultado r : historial) {
-            TipoApuesta tipo = r.getTipoApuesta();
-            conteo.put(tipo, conteo.getOrDefault(tipo, 0) + 1);
+            String nombre = r.getApuesta().getNombre();
+            conteo.put(nombre, conteo.getOrDefault(nombre, 0) + 1);
         }
 
-        TipoApuesta tipoMasJugado = null;
+        String tipoMasJugado = "";
         int maxConteo = 0;
-        for (Map.Entry<TipoApuesta, Integer> entry : conteo.entrySet()) {
+        for (Map.Entry<String, Integer> entry : conteo.entrySet()) {
             if (entry.getValue() > maxConteo) {
                 maxConteo = entry.getValue();
                 tipoMasJugado = entry.getKey();
@@ -78,8 +78,7 @@ public class Estadisticas {
         sb.append("Victorias: ").append(getVictorias()).append("\n");
         sb.append("Porcentaje de victorias: ").append(String.format("%.2f", getPorcentajeVictorias())).append("%\n");
         sb.append("Racha máxima de aciertos: ").append(getRachaMaxima()).append("\n");
-        TipoApuesta tipo = getTipoMasJugado();
-        sb.append("Tipo de apuesta más jugado: ").append(tipo != null ? tipo : "N/A").append("\n");
+        sb.append("Tipo de apuesta más jugado: ").append(getTipoMasJugado()).append("\n");
         return sb.toString();
     }
 }
