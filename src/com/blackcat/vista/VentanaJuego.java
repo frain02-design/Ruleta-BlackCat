@@ -3,6 +3,7 @@ package com.blackcat.vista;
 import com.blackcat.controlador.RuletaController;
 import com.blackcat.controlador.SessionController;
 import com.blackcat.modelo.Resultado;
+import com.blackcat.modelo.TipoApuesta;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +18,7 @@ public class VentanaJuego {
     private final JLabel etiquetaColor = new JLabel("Color: --");
     private final JLabel etiquetaResultado = new JLabel("Resultado: --");
 
-    private final JComboBox<String> comboTipo = new JComboBox<>(new String[]{"Rojo (R)", "Negro (N)", "Par (P)", "Impar (I)"});
+    private final JComboBox<TipoApuesta> comboTipo = new JComboBox<>(TipoApuesta.values());
     private final JTextField campoMonto = new JTextField();
     private final JButton botonGirar = new JButton("Girar ruleta");
     private final JButton botonVolver = new JButton("Volver al menú");
@@ -65,9 +66,7 @@ public class VentanaJuego {
                 return;
             }
 
-            String seleccion = (String) comboTipo.getSelectedItem();
-            char tipo = obtenerTipo(seleccion);
-
+            TipoApuesta tipo = (TipoApuesta) comboTipo.getSelectedItem();
             Resultado resultado = ruletaController.jugar(monto, tipo);
 
             etiquetaNumero.setText("Número: " + resultado.getNumero());
@@ -80,13 +79,6 @@ public class VentanaJuego {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(ventana, "Ingrese un monto válido", "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }
-
-    private char obtenerTipo(String seleccion) {
-        if (seleccion.contains("Rojo")) return 'R';
-        if (seleccion.contains("Negro")) return 'N';
-        if (seleccion.contains("Par")) return 'P';
-        return 'I';
     }
 
     private void volverAlMenu() {
