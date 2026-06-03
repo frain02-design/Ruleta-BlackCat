@@ -1,9 +1,10 @@
 package com.blackcat.vista;
 
 import com.blackcat.controlador.SessionController;
+import com.blackcat.modelo.Resultado;
 import com.blackcat.modelo.Usuario;
-import com.blackcat.vista.VentanaMenu;
-import com.blackcat.vista.VentanaRegistro;
+import com.blackcat.repositorio.IRepositorioResultados;
+import com.blackcat.repositorio.RepositorioArchivo;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,6 +15,7 @@ public class VentanaLogin {
 
     public static final List<Usuario> USUARIOS = new ArrayList<>();
     private final SessionController sessionController;
+    private final IRepositorioResultados repositorio;
 
     private final JFrame ventana = new JFrame("Login - Casino Black Cat");
     private final JLabel etiquetaUsuario = new JLabel("Usuario:");
@@ -23,11 +25,20 @@ public class VentanaLogin {
     private final JButton botonIngresar = new JButton("Ingresar");
     private final JButton botonRegistrar = new JButton("Registrar");
 
-    public VentanaLogin(SessionController sessionController) {
+    public VentanaLogin(SessionController sessionController, IRepositorioResultados repositorio) {
         this.sessionController = sessionController;
+        this.repositorio = repositorio;
         USUARIOS.add(new Usuario("admin", "1234", "Administrador"));
         USUARIOS.add(new Usuario("juan", "abc123", "Juan Pérez"));
+        cargarHistorialesDeUsuarios();
         configurarVentana();
+    }
+
+    private void cargarHistorialesDeUsuarios() {
+        for (Usuario u : USUARIOS) {
+            List<Resultado> historial = repositorio.obtenerResultadosPorUsuario(u);
+            u.setHistorial(historial);
+        }
     }
 
     private void configurarVentana() {
@@ -49,10 +60,6 @@ public class VentanaLogin {
         botonRegistrar.addActionListener(e -> abrirRegistro());
     }
 
-    public void mostrarVentana() {
-        ventana.setVisible(true);
-    }
-
     private void ingresar() {
         String nombreUsuario = campoUsuario.getText();
         String clave = new String(campoClave.getPassword());
@@ -66,7 +73,7 @@ public class VentanaLogin {
                     "Éxito",
                     JOptionPane.INFORMATION_MESSAGE);
             ventana.dispose();
-            VentanaMenu menu = new VentanaMenu(sessionController);
+            VentanaMenu menu = new VentanaMenu(sessionController, repositorio);
             menu.mostrarVentana();
         } else {
             JOptionPane.showMessageDialog(ventana,
@@ -86,7 +93,11 @@ public class VentanaLogin {
     }
 
     private void abrirRegistro() {
-        VentanaRegistro registro = new VentanaRegistro();
+        VentanaRegistro registro = new VentanaRegistro(repositorio);
         registro.mostrarVentana();
+    }
+
+    public void mostrarVentana() {
+        ventana.setVisible(true);
     }
 }

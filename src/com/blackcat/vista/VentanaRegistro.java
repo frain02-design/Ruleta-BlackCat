@@ -1,6 +1,7 @@
 package com.blackcat.vista;
 
 import com.blackcat.modelo.Usuario;
+import com.blackcat.repositorio.IRepositorioResultados;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,6 +9,7 @@ import java.awt.*;
 public class VentanaRegistro {
 
     private final JFrame ventana = new JFrame("Registro - Casino Black Cat");
+    private final IRepositorioResultados repositorio;
     private final JLabel etiquetaUsuario = new JLabel("Usuario:");
     private final JTextField campoUsuario = new JTextField();
     private final JLabel etiquetaClave = new JLabel("Clave:");
@@ -17,7 +19,8 @@ public class VentanaRegistro {
     private final JButton botonRegistrar = new JButton("Registrar");
     private final JButton botonCancelar = new JButton("Cancelar");
 
-    public VentanaRegistro() {
+    public VentanaRegistro(IRepositorioResultados repositorio) {
+        this.repositorio = repositorio;
         configurarVentana();
     }
 
@@ -53,7 +56,6 @@ public class VentanaRegistro {
             return;
         }
 
-        // Verificar si el usuario ya existe
         for (Usuario u : VentanaLogin.USUARIOS) {
             if (u.getNombreUsuario().equals(usuario)) {
                 JOptionPane.showMessageDialog(ventana,
