@@ -18,6 +18,7 @@ public class VentanaLogin {
     private final JButton botonRegistrar = new JButton("Registrar");
 
     public VentanaLogin() {
+        // Usuarios hardcodeados
         USUARIOS.add(new Usuario("admin", "1234", "Administrador"));
         USUARIOS.add(new Usuario("juan", "abc123", "Juan Pérez"));
 
@@ -36,40 +37,28 @@ public class VentanaLogin {
         ventana.add(campoClave);
         ventana.add(new JLabel());
         ventana.add(botonIngresar);
+        ventana.add(new JLabel());
         ventana.add(botonRegistrar);
 
         botonIngresar.addActionListener(e -> ingresar());
         botonRegistrar.addActionListener(e -> abrirRegistro());
     }
 
-    public void mostrarVentana() {
-        ventana.setVisible(true);
-    }
-
     private void ingresar() {
         String usuario = campoUsuario.getText();
         String clave = new String(campoClave.getPassword());
 
-        System.out.println("Usuario ingresado: " + usuario);
-        String nombreUsuario = validarCredenciales(usuario, clave);
+        Usuario usuarioActual = validarCredenciales(usuario, clave);
 
-        System.out.println("Nombre usuario validado: " + nombreUsuario);
-
-        if (!nombreUsuario.isEmpty()) {
-            System.out.println("Login exitoso, abriendo ruleta...");
+        if (usuarioActual != null) {
             JOptionPane.showMessageDialog(ventana,
-                    "Bienvenido " + nombreUsuario,
+                    "Bienvenido " + usuarioActual.getNombreCompleto(),
                     "Éxito",
                     JOptionPane.INFORMATION_MESSAGE);
             ventana.dispose();
-            try {
-                VentanaRuleta ruleta = new VentanaRuleta(nombreUsuario);
-                ruleta.mostrarVentana();
-                System.out.println("Ventana de ruleta debería estar abierta");
-            } catch (Exception e) {
-                System.out.println("ERROR al abrir ruleta: " + e.getMessage());
-                e.printStackTrace();
-            }
+            // ABRE EL MENÚ EN VEZ DE LA RULETA DIRECTA
+            VentanaMenu menu = new VentanaMenu(usuarioActual);
+            menu.mostrarVentana();
         } else {
             JOptionPane.showMessageDialog(ventana,
                     "Usuario o clave incorrectos",
@@ -78,13 +67,13 @@ public class VentanaLogin {
         }
     }
 
-    private String validarCredenciales(String usuario, String clave) {
+    private Usuario validarCredenciales(String usuario, String clave) {
         for (Usuario u : USUARIOS) {
             if (u.validarCredenciales(usuario, clave)) {
-                return u.getNombreCompleto();
+                return u;
             }
         }
-        return "";
+        return null;
     }
 
     private void abrirRegistro() {
@@ -92,4 +81,7 @@ public class VentanaLogin {
         registro.mostrarVentana();
     }
 
-}
+    public void mostrarVentana() {
+        ventana.setVisible(true);
+    }
+}}
