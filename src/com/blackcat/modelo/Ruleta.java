@@ -2,7 +2,7 @@ package com.blackcat.modelo;
 
 import java.util.Random;
 
-public class RuletaLogica {
+public class Ruleta {
 
     private static final int MAX_HISTORIAL = 100;
     private static final int NUMEROS_RULETA = 37;
@@ -14,7 +14,7 @@ public class RuletaLogica {
     private Random rng;
     private int[] numerosRojos;
 
-    public RuletaLogica() {
+    public Ruleta() {
         historialNumeros = new int[MAX_HISTORIAL];
         historialApuestas = new int[MAX_HISTORIAL];
         historialAciertos = new boolean[MAX_HISTORIAL];
