@@ -1,4 +1,4 @@
-package com.blackcat;
+package com.blackcat.modelo;
 
 import java.util.Random;
 
