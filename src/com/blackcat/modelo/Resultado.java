@@ -6,12 +6,12 @@ public class Resultado {
 
     private final LocalDateTime fecha;
     private final int numero;
-    private final char tipoApuesta;
+    private final TipoApuesta tipoApuesta;
     private final boolean acierto;
     private final int monto;
     private final Usuario usuario;
 
-    public Resultado(Usuario usuario, int numero, char tipoApuesta, boolean acierto, int monto) {
+    public Resultado(Usuario usuario, int numero, TipoApuesta tipoApuesta, boolean acierto, int monto) {
         this.usuario = usuario;
         this.numero = numero;
         this.tipoApuesta = tipoApuesta;
@@ -23,7 +23,7 @@ public class Resultado {
     // Getters
     public LocalDateTime getFecha() { return fecha; }
     public int getNumero() { return numero; }
-    public char getTipoApuesta() { return tipoApuesta; }
+    public TipoApuesta getTipoApuesta() { return tipoApuesta; }
     public boolean isAcierto() { return acierto; }
     public int getMonto() { return monto; }
     public Usuario getUsuario() { return usuario; }

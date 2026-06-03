@@ -37,21 +37,17 @@ public class Ruleta {
     }
 
     public String obtenerColor(int numero) {
-        if (numero == 0) {
-            return "Verde";
-        }
+        if (numero == 0) return "Verde";
         return esRojo(numero) ? "Rojo" : "Negro";
     }
 
-    public boolean evaluarResultado(int numero, char tipoApuesta) {
-        if (numero == 0) {
-            return false;
-        }
+    public boolean evaluarResultado(int numero, TipoApuesta tipoApuesta) {
+        if (numero == 0) return false;
         switch (tipoApuesta) {
-            case 'P': return numero % 2 == 0;
-            case 'I': return numero % 2 != 0;
-            case 'R': return esRojo(numero);
-            case 'N': return !esRojo(numero);
+            case PAR: return numero % 2 == 0;
+            case IMPAR: return numero % 2 != 0;
+            case ROJO: return esRojo(numero);
+            case NEGRO: return !esRojo(numero);
             default: return false;
         }
     }
@@ -65,19 +61,8 @@ public class Ruleta {
         }
     }
 
-    public int getHistorialSize() {
-        return historialSize;
-    }
-
-    public int[] getHistorialNumeros() {
-        return historialNumeros;
-    }
-
-    public int[] getHistorialApuestas() {
-        return historialApuestas;
-    }
-
-    public boolean[] getHistorialAciertos() {
-        return historialAciertos;
-    }
+    public int getHistorialSize() { return historialSize; }
+    public int[] getHistorialNumeros() { return historialNumeros; }
+    public int[] getHistorialApuestas() { return historialApuestas; }
+    public boolean[] getHistorialAciertos() { return historialAciertos; }
 }
