@@ -2,6 +2,7 @@ package com.blackcat.controlador;
 
 import com.blackcat.modelo.Ruleta;
 import com.blackcat.modelo.Resultado;
+import com.blackcat.modelo.TipoApuesta;
 import com.blackcat.modelo.Usuario;
 
 public class RuletaController {
@@ -14,7 +15,7 @@ public class RuletaController {
         this.sessionController = sessionController;
     }
 
-    public Resultado jugar(int monto, char tipoApuesta) {
+    public Resultado jugar(int monto, TipoApuesta tipoApuesta) {
         Usuario usuario = sessionController.getUsuarioActual();
         if (usuario == null) {
             throw new IllegalStateException("No hay sesión activa");
