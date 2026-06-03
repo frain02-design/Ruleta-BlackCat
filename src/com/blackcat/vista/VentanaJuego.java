@@ -2,8 +2,12 @@ package com.blackcat.vista;
 
 import com.blackcat.controlador.RuletaController;
 import com.blackcat.controlador.SessionController;
+import com.blackcat.modelo.ApuestaBase;
+import com.blackcat.modelo.ApuestaNegro;
+import com.blackcat.modelo.ApuestaPar;
+import com.blackcat.modelo.ApuestaRojo;
+import com.blackcat.modelo.ApuestaImpar;
 import com.blackcat.modelo.Resultado;
-import com.blackcat.modelo.TipoApuesta;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +22,7 @@ public class VentanaJuego {
     private final JLabel etiquetaColor = new JLabel("Color: --");
     private final JLabel etiquetaResultado = new JLabel("Resultado: --");
 
-    private final JComboBox<TipoApuesta> comboTipo = new JComboBox<>(TipoApuesta.values());
+    private final JComboBox<String> comboTipo = new JComboBox<>(new String[]{"Rojo", "Negro", "Par", "Impar"});
     private final JTextField campoMonto = new JTextField();
     private final JButton botonGirar = new JButton("Girar ruleta");
     private final JButton botonVolver = new JButton("Volver al menú");
@@ -58,6 +62,16 @@ public class VentanaJuego {
         botonVolver.addActionListener(e -> volverAlMenu());
     }
 
+    private ApuestaBase crearApuesta(String tipo, int monto) {
+        switch (tipo) {
+            case "Rojo": return new ApuestaRojo(monto);
+            case "Negro": return new ApuestaNegro(monto);
+            case "Par": return new ApuestaPar(monto);
+            case "Impar": return new ApuestaImpar(monto);
+            default: throw new IllegalArgumentException("Tipo inválido");
+        }
+    }
+
     private void jugar() {
         try {
             int monto = Integer.parseInt(campoMonto.getText().trim());
@@ -66,12 +80,13 @@ public class VentanaJuego {
                 return;
             }
 
-            TipoApuesta tipo = (TipoApuesta) comboTipo.getSelectedItem();
-            Resultado resultado = ruletaController.jugar(monto, tipo);
+            String tipoSeleccionado = (String) comboTipo.getSelectedItem();
+            ApuestaBase apuesta = crearApuesta(tipoSeleccionado, monto);
+
+            Resultado resultado = ruletaController.jugar(apuesta);
 
             etiquetaNumero.setText("Número: " + resultado.getNumero());
-            etiquetaColor.setText("Color: " + (resultado.getNumero() == 0 ? "Verde" :
-                    (ruletaController.getRuleta().esRojo(resultado.getNumero()) ? "Rojo" : "Negro")));
+            etiquetaColor.setText("Color: " + ruletaController.getRuleta().obtenerColor(resultado.getNumero()));
             etiquetaResultado.setText(resultado.isAcierto() ? "🎉 ¡GANASTE! +$" + monto : "💀 PERDISTE -$" + monto);
 
             campoMonto.setText("");
