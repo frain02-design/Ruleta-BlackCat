@@ -1,4 +1,9 @@
-package com.blackcat;
+package com.blackcat.vista;
+
+import com.blackcat.controlador.SessionController;
+import com.blackcat.modelo.Usuario;
+import com.blackcat.vista.VentanaMenu;
+import com.blackcat.vista.VentanaRegistro;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,6 +13,7 @@ import java.util.List;
 public class VentanaLogin {
 
     public static final List<Usuario> USUARIOS = new ArrayList<>();
+    private final SessionController sessionController;
 
     private final JFrame ventana = new JFrame("Login - Casino Black Cat");
     private final JLabel etiquetaUsuario = new JLabel("Usuario:");
@@ -17,7 +23,8 @@ public class VentanaLogin {
     private final JButton botonIngresar = new JButton("Ingresar");
     private final JButton botonRegistrar = new JButton("Registrar");
 
-    public VentanaLogin() {
+    public VentanaLogin(SessionController sessionController) {
+        this.sessionController = sessionController;
         USUARIOS.add(new Usuario("admin", "1234", "Administrador"));
         USUARIOS.add(new Usuario("juan", "abc123", "Juan Pérez"));
         configurarVentana();
@@ -53,13 +60,13 @@ public class VentanaLogin {
         Usuario usuarioActual = buscarUsuario(nombreUsuario, clave);
 
         if (usuarioActual != null) {
+            sessionController.iniciarSesion(usuarioActual);
             JOptionPane.showMessageDialog(ventana,
                     "Bienvenido " + usuarioActual.getNombreCompleto(),
                     "Éxito",
                     JOptionPane.INFORMATION_MESSAGE);
             ventana.dispose();
-            // === CAMBIO IMPORTANTE ===
-            VentanaMenu menu = new VentanaMenu(usuarioActual);
+            VentanaMenu menu = new VentanaMenu(sessionController);
             menu.mostrarVentana();
         } else {
             JOptionPane.showMessageDialog(ventana,

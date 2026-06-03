@@ -1,4 +1,6 @@
-package com.blackcat;
+package com.blackcat.vista;
+
+import com.blackcat.modelo.Usuario;
 
 import javax.swing.*;
 import java.awt.*;
@@ -51,9 +53,9 @@ public class VentanaRegistro {
             return;
         }
 
-
+        // Verificar si el usuario ya existe
         for (Usuario u : VentanaLogin.USUARIOS) {
-            if (u.validarCredenciales(usuario, clave)) {
+            if (u.getNombreUsuario().equals(usuario)) {
                 JOptionPane.showMessageDialog(ventana,
                         "El usuario ya existe",
                         "Error",
