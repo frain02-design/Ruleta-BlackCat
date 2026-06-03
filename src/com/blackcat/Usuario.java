@@ -6,6 +6,10 @@ public class Usuario {
     private String contrasena;
     private String nombreCompleto;
 
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
     public Usuario(String nombreUsuario, String contrasena, String nombreCompleto) {
         this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;
