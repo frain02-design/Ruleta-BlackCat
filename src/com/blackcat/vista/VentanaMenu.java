@@ -1,4 +1,7 @@
-package com.blackcat;
+package com.blackcat.vista;
+
+import com.blackcat.controlador.RuletaController;
+import com.blackcat.controlador.SessionController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,10 +12,10 @@ public class VentanaMenu {
     private final JButton botonJugar = new JButton("Jugar a la ruleta");
     private final JButton botonHistorial = new JButton("Ver historial");
     private final JButton botonCerrarSesion = new JButton("Cerrar sesión");
-    private final Usuario usuario;
+    private final SessionController sessionController;
 
-    public VentanaMenu(Usuario usuario) {
-        this.usuario = usuario;
+    public VentanaMenu(SessionController sessionController) {
+        this.sessionController = sessionController;
         configurarVentana();
     }
 
@@ -33,18 +36,20 @@ public class VentanaMenu {
 
     private void abrirRuleta() {
         ventana.dispose();
-        VentanaJuego juego = new VentanaJuego(usuario);
+        RuletaController ruletaController = new RuletaController(sessionController);
+        VentanaJuego juego = new VentanaJuego(ruletaController, sessionController);
         juego.mostrarVentana();
     }
 
     private void abrirHistorial() {
-        VentanaHistorial historial = new VentanaHistorial(usuario);
+        VentanaHistorial historial = new VentanaHistorial(sessionController);
         historial.mostrarVentana();
     }
 
     private void cerrarSesion() {
+        sessionController.cerrarSesion();
         ventana.dispose();
-        new VentanaLogin().mostrarVentana();
+        new VentanaLogin(sessionController).mostrarVentana();
     }
 
     public void mostrarVentana() {

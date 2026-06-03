@@ -1,4 +1,7 @@
-package com.blackcat;
+package com.blackcat.vista;
+
+import com.blackcat.controlador.SessionController;
+import com.blackcat.modelo.Resultado;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,12 +9,12 @@ import java.awt.*;
 public class VentanaHistorial {
 
     private final JFrame ventana = new JFrame("Historial - Casino Black Cat");
-    private final Usuario usuario;
+    private final SessionController sessionController;
     private final JTextArea areaHistorial = new JTextArea();
     private final JButton botonCerrar = new JButton("Cerrar");
 
-    public VentanaHistorial(Usuario usuario) {
-        this.usuario = usuario;
+    public VentanaHistorial(SessionController sessionController) {
+        this.sessionController = sessionController;
         configurarVentana();
     }
 
@@ -34,9 +37,17 @@ public class VentanaHistorial {
     }
 
     private void cargarHistorial() {
-        areaHistorial.setText("Historial de jugadas de " + usuario.getNombreCompleto() + "\n");
+        String nombreUsuario = sessionController.getUsuarioActual().getNombreCompleto();
+        areaHistorial.setText("Historial de jugadas de " + nombreUsuario + "\n");
         areaHistorial.append("============================================\n");
-        areaHistorial.append("\n(Próximamente: historial completo de jugadas)\n");
+
+        for (Resultado r : sessionController.getUsuarioActual().getHistorial()) {
+            areaHistorial.append(r.toString() + "\n");
+        }
+
+        if (sessionController.getUsuarioActual().getHistorial().isEmpty()) {
+            areaHistorial.append("\nNo hay jugadas registradas aún.\n");
+        }
     }
 
     public void mostrarVentana() {

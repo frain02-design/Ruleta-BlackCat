@@ -1,4 +1,8 @@
-package com.blackcat;
+package com.blackcat.vista;
+
+import com.blackcat.controlador.RuletaController;
+import com.blackcat.controlador.SessionController;
+import com.blackcat.modelo.Resultado;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,8 +10,8 @@ import java.awt.*;
 public class VentanaJuego {
 
     private final JFrame ventana = new JFrame("Ruleta - Casino Black Cat");
-    private final RuletaLogica ruleta = new RuletaLogica();
-    private final Usuario usuario;
+    private final RuletaController ruletaController;
+    private final SessionController sessionController;
 
     private final JLabel etiquetaNumero = new JLabel("Número: --");
     private final JLabel etiquetaColor = new JLabel("Color: --");
@@ -18,8 +22,9 @@ public class VentanaJuego {
     private final JButton botonGirar = new JButton("Girar ruleta");
     private final JButton botonVolver = new JButton("Volver al menú");
 
-    public VentanaJuego(Usuario usuario) {
-        this.usuario = usuario;
+    public VentanaJuego(RuletaController ruletaController, SessionController sessionController) {
+        this.ruletaController = ruletaController;
+        this.sessionController = sessionController;
         configurarVentana();
     }
 
@@ -29,7 +34,8 @@ public class VentanaJuego {
         ventana.setLayout(new GridLayout(7, 2, 10, 10));
         ventana.setLocationRelativeTo(null);
 
-        ventana.add(new JLabel("Bienvenido: " + usuario.getNombreCompleto()));
+        String nombreUsuario = sessionController.getUsuarioActual().getNombreCompleto();
+        ventana.add(new JLabel("Bienvenido: " + nombreUsuario));
         ventana.add(new JLabel());
 
         ventana.add(new JLabel("Tipo de apuesta:"));
@@ -62,13 +68,14 @@ public class VentanaJuego {
             String seleccion = (String) comboTipo.getSelectedItem();
             char tipo = obtenerTipo(seleccion);
 
-            int numero = ruleta.girarRuleta();
-            boolean acierto = ruleta.evaluarResultado(numero, tipo);
-            ruleta.registrarResultado(numero, monto, acierto);
+            Resultado resultado = ruletaController.jugar(monto, tipo);
 
-            etiquetaNumero.setText("Número: " + numero);
-            etiquetaColor.setText("Color: " + ruleta.obtenerColor(numero));
-            etiquetaResultado.setText(acierto ? "🎉 ¡GANASTE! +$" + monto : "💀 PERDISTE -$" + monto);
+            etiquetaNumero.setText("Número: " + resultado.getNumero());
+            etiquetaColor.setText("Color: " + (resultado.getNumero() == 0 ? "Verde" :
+                    (ruletaController.getRuleta().esRojo(resultado.getNumero()) ? "Rojo" : "Negro")));
+            etiquetaResultado.setText(resultado.isAcierto() ? "🎉 ¡GANASTE! +$" + monto : "💀 PERDISTE -$" + monto);
+
+            campoMonto.setText("");
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(ventana, "Ingrese un monto válido", "Error", JOptionPane.ERROR_MESSAGE);
@@ -84,7 +91,7 @@ public class VentanaJuego {
 
     private void volverAlMenu() {
         ventana.dispose();
-        new VentanaMenu(usuario).mostrarVentana();
+        new VentanaMenu(sessionController).mostrarVentana();
     }
 
     public void mostrarVentana() {
