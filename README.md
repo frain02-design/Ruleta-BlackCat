@@ -41,8 +41,60 @@ git clone https://github.com/frain02-design/Ruleta-BlackCat.git
 cd Ruleta-BlackCat
 # Abrir con IntelliJ IDEA y ejecutar Principal.java
 
-2. Login
+### 2. Login
 Usuario	Contraseña
 admin	1234
 juan	abc123
-3. Menú principal
+### 3. Menú principal
+-Jugar a la ruleta - Realizar apuestas y girar la ruleta
+-Ver historial - Historial completo de jugadas
+-Ver estadísticas - Métricas de juego (racha máxima, etc.)
+-Cerrar sesión - Volver al login
+### 4. Juego de ruleta
+1-Selecciona tipo de apuesta: Rojo, Negro, Par o Impar
+2-Ingresa el monto a apostar
+3-Haz clic en "Girar ruleta"
+4-El sistema muestra:
+  Número obtenido (0-36)
+  Color del número
+  Si ganaste o perdiste
+### 📊 Persistencia
+El historial se guarda automáticamente en historial.csv en la raíz del proyecto.
+Formato CSV:
+usuario,nombreCompleto,numero,tipoApuesta,acierto,monto,fecha
+admin,Administrador,7,Rojo,true,1000,2025-06-03T10:30:00
+
+### 📚 Principios aplicados
+Principio	Aplicación
+SRP	Una clase tiene una sola responsabilidad
+OCP	Abierto para extensión, cerrado para modificación
+LSP	Las subclases pueden reemplazar a la superclase
+DIP	Depender de abstracciones (interfaz IRepositorioResultados)
+MVC	Separación Modelo-Vista-Controlador
+Encapsulamiento	Getters, setters, listas inmutables
+
+# Login correcto
+Usuario: admin
+Clave: 1234
+→ Mensaje: "Bienvenido Administrador"
+
+# Jugar una ronda
+Apuesta: Rojo
+Monto: 100
+→ Resultado: número y color
+
+# Ver historial
+→ Lista de jugadas
+
+# Ver estadísticas
+→ Métricas: racha máxima, tipo más jugado, etc.
+
+# Cerrar sesión
+→ Vuelve a la pantalla de login
+
+# Cerrar programa
+→ El historial persiste en historial.csv
+
+👨‍💻 Autor
+Proyecto académico - Programación Orientada a Objetos
+
