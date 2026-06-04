@@ -32,15 +32,6 @@ Sistema completo de ruleta desarrollado en Java con Swing, aplicando principios 
 ### Arquitectura (MVC)
 <img width="556" height="803" alt="image" src="https://github.com/user-attachments/assets/d31df225-6f74-466e-8112-b756ca5163c2" />
 
-
-## 🎮 Cómo jugar
-
-### 1. Ejecutar el programa
-```bash
-git clone https://github.com/frain02-design/Ruleta-BlackCat.git
-cd Ruleta-BlackCat
-# Abrir con IntelliJ IDEA y ejecutar Principal.java
-
 ### 2. Login
 Usuario	Contraseña
 admin	1234
@@ -72,6 +63,13 @@ LSP	Las subclases pueden reemplazar a la superclase
 DIP	Depender de abstracciones (interfaz IRepositorioResultados)
 MVC	Separación Modelo-Vista-Controlador
 Encapsulamiento	Getters, setters, listas inmutables
+### 🎮 Cómo jugar
+
+ ### 1. Ejecutar el programa
+  ```bash
+  git clone https://github.com/frain02-design/Ruleta-BlackCat.git
+  cd Ruleta-BlackCat
+  # Abrir con IntelliJ IDEA y ejecutar Principal.java
 
 # Login correcto
 Usuario: admin
@@ -95,6 +93,5 @@ Monto: 100
 # Cerrar programa
 → El historial persiste en historial.csv
 
-👨‍💻 Autor
-Proyecto académico - Programación Orientada a Objetos
+
 
