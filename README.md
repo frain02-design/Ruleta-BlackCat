@@ -1,61 +1,48 @@
-Simulador de ruleta en Java para jugar desde la consola.
+# 🎰 Ruleta BlackCat
 
-## Cómo jugar
+Sistema completo de ruleta desarrollado en Java con Swing, aplicando principios de Programación Orientada a Objetos y patrones de diseño.
 
-1. Ejecuta el programa
-2. Elige una opción del menú:
-   - 1 = Iniciar ronda
-   - 2 = Ver estadísticas
-   - 0 = Salir
+---
 
-## Tipos de apuesta
+## 📋 Laboratorios completados
 
-- R = Rojo
-- N = Negro  
-- P = Par
-- I = Impar
+| Laboratorio | Tema | Estado |
+|-------------|------|--------|
+| Lab 01 | Ruleta en consola (CLI) | ✅ |
+| Lab 02 | Login y registro con Swing | ✅ |
+| Lab 03 | Separar lógica de la vista (MVC básico) | ✅ |
+| Lab 04 | MVC completo + encapsulamiento | ✅ |
+| Lab 05 | Asociaciones y dependencias (TipoApuesta enum) | ✅ |
+| Lab 06 | Round-trip y módulo de estadísticas | ✅ |
+| Lab 07 | Herencia y polimorfismo (jerarquía de apuestas) | ✅ |
+| Lab 08 | Interfaces y persistencia (archivos CSV) | ✅ |
 
-## Requisitos
+---
 
-- Java JDK 22
+## 🚀 Características
 
-# Lab02 - Casino Black Cat - Ruleta
-# Pruebas realizadas
+### Funcionalidades principales
+- Login de usuarios con credenciales hardcodeadas
+- Registro de nuevos usuarios
+- Juego de ruleta con apuestas: Rojo, Negro, Par, Impar
+- Historial de jugadas por usuario
+- Estadísticas detalladas (racha máxima, tipo más jugado, etc.)
+- Persistencia en archivo CSV (el historial se guarda entre sesiones)
 
-## Prueba 1: Login correcto
-- Usuario: admin
-- Clave: 1234
-- Resultado: Mensaje de éxito + ventana de ruleta
-
-## Prueba 2: Login incorrecto
-- Usuario: admin
-- Clave: claveincorrecta
-- Resultado: Mensaje de error
-
-## Prueba 3: Registrar nuevo usuario
-- Usuario: pedro
-- Clave: 123
-- Nombre: Pedro López
-- Resultado: Mensaje de éxito
-
-## Prueba 4: Login con usuario nuevo
-- Usuario: pedro
-- Clave: 123
-- Resultado: Mensaje de éxito + ventana de ruleta
-
-## Prueba 5: Validación de campos vacíos
-- Dejar campos vacíos en registro
-- Resultado: Mensaje de error "Todos los campos son obligatorios"
-
-- <img width="1269" height="639" alt="image" src="https://github.com/user-attachments/assets/0086a485-f4bc-429c-b783-c2ab20989e55" />
-<img width="360" height="304" alt="image" src="https://github.com/user-attachments/assets/facd1179-6cd2-42a4-b1da-2a341af4b91a" />
-<img width="476" height="363" alt="image" src="https://github.com/user-attachments/assets/838e5ebc-a6a7-40f9-9d6b-330807e1004a" />
-<img width="419" height="297" alt="image" src="https://github.com/user-attachments/assets/fa0c43e5-3bea-488e-95a8-17ad37ffeed0" />
-<img width="410" height="297" alt="image" src="https://github.com/user-attachments/assets/88b45a9b-22d9-47c9-9f66-ab83c99e32f1" />
-<img width="351" height="297" alt="image" src="https://github.com/user-attachments/assets/9c49753b-c518-429a-bab4-c48cff9f9418" />
+### Arquitectura (MVC)
+<img width="556" height="803" alt="image" src="https://github.com/user-attachments/assets/d31df225-6f74-466e-8112-b756ca5163c2" />
 
 
+## 🎮 Cómo jugar
 
+### 1. Ejecutar el programa
+```bash
+git clone https://github.com/frain02-design/Ruleta-BlackCat.git
+cd Ruleta-BlackCat
+# Abrir con IntelliJ IDEA y ejecutar Principal.java
 
-
-
+2. Login
+Usuario	Contraseña
+admin	1234
+juan	abc123
+3. Menú principal
