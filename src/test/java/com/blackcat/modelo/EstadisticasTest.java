@@ -19,6 +19,8 @@ class EstadisticasTest {
         usuario = new Usuario("test", "123", "Test User");
         historial = new ArrayList<>();
 
+        // Historial: Acierto, Fallo, Acierto, Fallo, Acierto
+        // Racha máxima = 1 (no hay aciertos consecutivos)
         historial.add(new Resultado(usuario, 7, new ApuestaRojo(100), true));
         historial.add(new Resultado(usuario, 15, new ApuestaRojo(100), false));
         historial.add(new Resultado(usuario, 3, new ApuestaRojo(100), true));
@@ -34,7 +36,7 @@ class EstadisticasTest {
         assertEquals(5, estadisticas.getTotalJugadas());
         assertEquals(3, estadisticas.getVictorias());
         assertEquals(60.0, estadisticas.getPorcentajeVictorias(), 0.01);
-        assertEquals(2, estadisticas.getRachaMaxima());
+        assertEquals(1, estadisticas.getRachaMaxima());
         assertEquals("Rojo", estadisticas.getTipoMasJugado());
     }
 
