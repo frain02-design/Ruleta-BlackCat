@@ -4,7 +4,6 @@ import com.blackcat.controlador.SessionController;
 import com.blackcat.modelo.Resultado;
 import com.blackcat.modelo.Usuario;
 import com.blackcat.repositorio.IRepositorioResultados;
-import com.blackcat.repositorio.RepositorioArchivo;
 
 import javax.swing.*;
 import java.awt.*;
