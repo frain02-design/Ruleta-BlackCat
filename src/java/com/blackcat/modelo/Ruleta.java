@@ -17,7 +17,6 @@ public class Ruleta {
     private int saldo;
     private IRepositorioResultados repositorio;
 
-    // Constructor sin parámetros (el que ya tenías)
     public Ruleta() {
         historialNumeros = new int[MAX_HISTORIAL];
         historialApuestas = new int[MAX_HISTORIAL];
@@ -61,17 +60,6 @@ public class Ruleta {
         return esRojo(numero) ? "Rojo" : "Negro";
     }
 
-    public boolean evaluarResultado(int numero, char tipoApuesta) {
-        if (numero == 0) return false;
-        switch (tipoApuesta) {
-            case 'P': return numero % 2 == 0;
-            case 'I': return numero % 2 != 0;
-            case 'R': return esRojo(numero);
-            case 'N': return !esRojo(numero);
-            default: return false;
-        }
-    }
-
     public void registrarResultado(int numero, int apuesta, boolean acierto) {
         if (historialSize < MAX_HISTORIAL) {
             historialNumeros[historialSize] = numero;
@@ -94,6 +82,7 @@ public class Ruleta {
         this.saldo += monto;
     }
 
+    // ✅ CORREGIDO: Método jugar recibe solo ApuestaBase
     public Resultado jugar(ApuestaBase apuesta) {
         if (apuesta == null) {
             throw new IllegalArgumentException("Apuesta requerida");
@@ -114,12 +103,6 @@ public class Ruleta {
             saldo -= apuesta.getMonto();
         }
 
-
-        Usuario usuario = null;
-        if (repositorio != null) {
-
-        }
-
-        return new Resultado(usuario, numero, apuesta, acierto);
+        return new Resultado(null, numero, apuesta, acierto);
     }
 }
