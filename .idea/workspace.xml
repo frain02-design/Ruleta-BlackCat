@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="87468125-8e16-4cf6-b29f-f137f78082c7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/com/blackcat/controlador/RuletaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/com/blackcat/controlador/RuletaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/blackcat/controlador/RuletaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackcat/controlador/RuletaController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/blackcat/controlador/SessionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackcat/controlador/SessionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/blackcat/modelo/Ruleta.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackcat/modelo/Ruleta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/blackcat/vista/VentanaMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackcat/vista/VentanaMenu.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;frain02-design&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/frain02-design/Ruleta-BlackCat.git&quot;,
+    &quot;accountId&quot;: &quot;f2e41eec-49f8-4069-9467-c80f8717bfda&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="3FIAmRhg65fwhoqAzWP6fEVGnzJ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Principal.executor": "Run",
+    "JUnit.SessionControllerTest.executor": "Run",
+    "JUnit.java in Ruleta-BlackCat.executor": "Run",
+    "Maven.Ruleta-BlackCat [clean].executor": "Run",
+    "Maven.Ruleta-BlackCat [compile].executor": "Run",
+    "Maven.Ruleta-BlackCat [test].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "lab-09-pruebas",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/felip/IdeaProjects/Ruleta-BlackCat/pom.xml"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="java in Ruleta-BlackCat" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Ruleta-BlackCat" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.java in Ruleta-BlackCat" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.32098.37" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="87468125-8e16-4cf6-b29f-f137f78082c7" name="Changes" comment="" />
+      <created>1781752368867</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1781752368867</updated>
+    </task>
+    <servers />
+  </component>
+</project>
