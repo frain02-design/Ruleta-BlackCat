@@ -23,7 +23,7 @@ public class RuletaController {
         if (usuario == null) {
             throw new IllegalStateException("No hay sesión activa");
         }
-        Resultado resultado = ruleta.jugar(usuario, apuesta);
+        Resultado resultado = ruleta.jugar(apuesta);
         repositorio.guardarResultado(resultado);
         return resultado;
     }

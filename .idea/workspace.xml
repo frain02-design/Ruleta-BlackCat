@@ -5,25 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87468125-8e16-4cf6-b29f-f137f78082c7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Ruleta-BlackCat.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ruleta-BlackCat/com/blackcat/Principal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ruleta-BlackCat/com/blackcat/controlador/RuletaController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ruleta-BlackCat/com/blackcat/controlador/SessionController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ruleta-BlackCat/com/blackcat/modelo/Resultado.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ruleta-BlackCat/com/blackcat/modelo/Ruleta.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ruleta-BlackCat/com/blackcat/modelo/Usuario.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ruleta-BlackCat/com/blackcat/vista/VentanaHistorial.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ruleta-BlackCat/com/blackcat/vista/VentanaJuego.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ruleta-BlackCat/com/blackcat/vista/VentanaLogin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ruleta-BlackCat/com/blackcat/vista/VentanaMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Ruleta-BlackCat/com/blackcat/vista/VentanaRegistro.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/com/blackcat/vista/VentanaJuego.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/com/blackcat/vista/VentanaJuego.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/com/blackcat/vista/VentanaLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/com/blackcat/vista/VentanaLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/com/blackcat/controlador/RuletaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/com/blackcat/controlador/RuletaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/blackcat/controlador/RuletaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackcat/controlador/RuletaController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/blackcat/controlador/SessionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackcat/controlador/SessionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/blackcat/modelo/Ruleta.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackcat/modelo/Ruleta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/blackcat/vista/VentanaMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackcat/vista/VentanaMenu.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,17 +45,34 @@
   "keyToString": {
     "Application.Principal.executor": "Run",
     "JUnit.SessionControllerTest.executor": "Run",
+    "JUnit.java in Ruleta-BlackCat.executor": "Run",
     "Maven.Ruleta-BlackCat [clean].executor": "Run",
     "Maven.Ruleta-BlackCat [compile].executor": "Run",
     "Maven.Ruleta-BlackCat [test].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "lab-09-pruebas",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/felip/IdeaProjects/Ruleta-BlackCat/pom.xml"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="java in Ruleta-BlackCat" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Ruleta-BlackCat" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.java in Ruleta-BlackCat" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
