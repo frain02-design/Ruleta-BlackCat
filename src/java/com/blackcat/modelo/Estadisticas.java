@@ -48,6 +48,7 @@ public class Estadisticas {
         return rachaMax;
     }
 
+    // ✅ CORREGIDO: Obtiene el nombre del tipo de apuesta más jugado
     public String getTipoMasJugado() {
         if (historial.isEmpty()) {
             return "N/A";
@@ -72,7 +73,7 @@ public class Estadisticas {
 
     public String getResumen() {
         StringBuilder sb = new StringBuilder();
-        sb.append("ESTADÍSTICAS DEL JUGADOR\n");
+        sb.append("📊 ESTADÍSTICAS DEL JUGADOR\n");
         sb.append("================================\n");
         sb.append("Total jugadas: ").append(getTotalJugadas()).append("\n");
         sb.append("Victorias: ").append(getVictorias()).append("\n");
