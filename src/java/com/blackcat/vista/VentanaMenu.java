@@ -43,7 +43,7 @@ public class VentanaMenu {
     private void abrirRuleta() {
         ventana.dispose();
         RuletaController ruletaController = new RuletaController(sessionController, repositorio);
-        VentanaJuego juego = new VentanaJuego(ruletaController, sessionController);
+        VentanaJuego juego = new VentanaJuego(ruletaController, sessionController, repositorio);
         juego.mostrarVentana();
     }
 

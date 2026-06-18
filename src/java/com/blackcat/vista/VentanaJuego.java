@@ -8,6 +8,7 @@ import com.blackcat.modelo.ApuestaPar;
 import com.blackcat.modelo.ApuestaRojo;
 import com.blackcat.modelo.ApuestaImpar;
 import com.blackcat.modelo.Resultado;
+import com.blackcat.repositorio.IRepositorioResultados;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,6 +18,7 @@ public class VentanaJuego {
     private final JFrame ventana = new JFrame("Ruleta - Casino Black Cat");
     private final RuletaController ruletaController;
     private final SessionController sessionController;
+    private final IRepositorioResultados repositorio;
 
     private final JLabel etiquetaNumero = new JLabel("Número: --");
     private final JLabel etiquetaColor = new JLabel("Color: --");
@@ -27,9 +29,10 @@ public class VentanaJuego {
     private final JButton botonGirar = new JButton("Girar ruleta");
     private final JButton botonVolver = new JButton("Volver al menú");
 
-    public VentanaJuego(RuletaController ruletaController, SessionController sessionController) {
+    public VentanaJuego(RuletaController ruletaController, SessionController sessionController, IRepositorioResultados repositorio) {
         this.ruletaController = ruletaController;
         this.sessionController = sessionController;
+        this.repositorio = repositorio;
         configurarVentana();
     }
 
@@ -98,7 +101,7 @@ public class VentanaJuego {
 
     private void volverAlMenu() {
         ventana.dispose();
-        new VentanaMenu(sessionController).mostrarVentana();
+        new VentanaMenu(sessionController, repositorio).mostrarVentana();  // ← Ahora tiene 2 parámetros
     }
 
     public void mostrarVentana() {
