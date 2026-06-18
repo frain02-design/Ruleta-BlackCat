@@ -5,6 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/.idea/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src a" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="false" />
     </content>
   </component>
 </module>
